@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f0f0f0;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            border: 1px solid #ccc;
+        }
+
+        /* ===== Section Header ===== */
+        .section-header {
+            background: #eee;
+            padding: 10px 15px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .section-header h3 {
+            margin: 0;
+        }
+
+        /* ===== Form Row ===== */
+        .form-row {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+        }
+
+        .form-row label {
+            width: 30%;
+            font-weight: bold;
+        }
+
+        .form-row .field {
+            width: 70%;
+        }
+
+        /* ===== Input ===== */
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 6px 8px;
+            border: 1px solid #aaa;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        /* ===== Icon Input ===== */
+        .input-icon {
+            position: relative;
+        }
+
+        .input-icon i {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #555;
+        }
+
+        /* ===== Radio & Checkbox ===== */
+        .option-list label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+
+        /* ===== Footer ===== */
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-top: 1px solid #ccc;
+        }
+
+        button {
+            padding: 6px 12px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-dark {
+            background: #000;
+            color: #fff;
+        }
+
+        .note {
+            padding: 0 15px 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <!-- ===== BASIC INFO ===== -->
+    <div class="section-header">
+        <h3>Basic Info</h3>
+    </div>
+
+    <div class="form-row">
+        <label>Employee ID</label>
+        <div class="field">9</div>
+    </div>
+
+    <div class="form-row">
+        <label>Last Name</label>
+        <div class="field">Dodsworth</div>
+    </div>
+
+    <div class="form-row">
+        <label>First Name</label>
+        <div class="field input-icon">
+            <input type="text" value="Anne">
+            <i class="fa-solid fa-user"></i>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>Gender</label>
+        <div class="field option-list">
+            <label><input type="radio" name="gender"> Male</label>
+            <label><input type="radio" name="gender"> Female</label>
+            <label><input type="radio" name="gender"> XXX</label>
+            <label><input type="radio" name="gender"> ZZZ</label>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>Title</label>
+        <div class="field">
+            <input type="text" value="Sales Representative">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>Suffix</label>
+        <div class="field">
+            <input type="text" value="Ms.">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>Birth Date</label>
+        <div class="field">
+            <input type="text" value="1969-07-02 00:00:00">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>Hire Date</label>
+        <div class="field">
+            <input type="text" value="1994-11-15 00:00:00">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>SSN #</label>
+        <div class="field input-icon">
+            <input type="text">
+            <i class="fa-solid fa-lock"></i>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>Reports To</label>
+        <div class="field">
+            <select>
+                <option>Bunchana</option>
+                <option>Hà Nội</option>
+                <option>Việt Nam</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- ===== CONTACT INFO ===== -->
+    <div class="section-header">
+        <h3>Contact Info</h3>
+    </div>
+
+    <div class="form-row">
+        <label>Email</label>
+        <div class="field">
+            <input type="email" placeholder="name@example.com">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>Address</label>
+        <div class="field">
+            <input type="text" value="7 Houndstooh Rd.">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>City</label>
+        <div class="field">
+            <input type="text" value="London">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>Postal Code</label>
+        <div class="field">
+            <input type="text" value="WG2 7LT">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>Country</label>
+        <div class="field">
+            <select>
+                <option>Russian Federation</option>
+                <option>Việt Nam</option>
+                <option>USA</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- ===== OPTIONAL INFO ===== -->
+    <div class="section-header">
+        <h3>Optional Info</h3>
+    </div>
+
+    <div class="form-row">
+        <label>Notes</label>
+        <div class="field">
+            <textarea rows="6">
+Anne has a BA degree in English from St. Lawrence College.
+She is fluent in French and German.
+            </textarea>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>Preferred</label>
+        <div class="field option-list">
+            <label><input type="checkbox"> Regular</label>
+            <label><input type="checkbox"> Gray Yard</label>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label>Active?</label>
+        <div class="field">
+            <input type="checkbox">
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="form-footer">
+        <div>
+            <button class="btn-dark"><i class="fa fa-angle-left"></i></button>
+            <button class="btn-dark"><i class="fa fa-angle-right"></i></button>
+        </div>
+
+        <div>
+            <button class="btn-dark"><i class="fa fa-save"></i> Submit</button>
+            <button class="btn-dark">X Cancel</button>
+        </div>
+    </div>
+
+    <div class="note">
+        * required
+    </div>
+
+</div>
+
+</body>
+</html>
