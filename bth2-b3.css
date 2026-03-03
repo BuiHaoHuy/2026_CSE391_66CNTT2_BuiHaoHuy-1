@@ -1,0 +1,90 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f2f2f2;
+    padding:60px 10%;
+    color:#333;
+}
+
+/* Section chính */
+section{
+    background:#ffffff;
+    padding:50px;
+    border-radius:10px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Header */
+header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+header h1{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+header hr{
+    width:80px;
+    height:3px;
+    background:#333;
+    border:none;
+    margin:auto;
+}
+
+/* Table layout */
+table{
+    border-collapse:collapse;
+}
+
+/* Cột trái */
+td:first-child{
+    background:#fafafa;
+    border-right:1px solid #ddd;
+}
+
+td{
+    vertical-align:top;
+}
+
+/* Article */
+article h2{
+    font-size:20px;
+    margin-bottom:15px;
+}
+
+article p{
+    margin-bottom:15px;
+    line-height:1.6;
+}
+
+/* Tên */
+article strong{
+    display:block;
+    margin-top:20px;
+    font-size:16px;
+}
+
+article em{
+    color:#777;
+    font-size:14px;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    table, tr, td{
+        display:block;
+        width:100%;
+    }
+
+    td:first-child{
+        border-right:none;
+        margin-bottom:30px;
+    }
+}
