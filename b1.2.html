@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Bảng điểm sinh viên</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background:#f4f6fb;
+display:flex;
+justify-content:center;
+padding:40px;
+}
+
+.container{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+width:700px;
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+.input-group{
+display:flex;
+gap:10px;
+margin-bottom:15px;
+}
+
+input,select{
+padding:8px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+padding:8px 14px;
+border:none;
+background:#3498db;
+color:white;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#2980b9;
+}
+
+table{
+border-collapse: collapse;
+width:100%;
+margin-top:15px;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:10px;
+text-align:center;
+}
+
+th{
+cursor:pointer;
+background:#3498db;
+color:white;
+}
+
+tr:nth-child(even){
+background:#f9f9f9;
+}
+
+tr:hover{
+background:#eaf3ff;
+}
+
+.search-filter{
+display:flex;
+gap:10px;
+margin-top:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Bảng điểm sinh viên</h2>
+
+<div class="input-group">
+<input type="text" id="name" placeholder="Họ tên">
+<input type="number" id="score" placeholder="Điểm">
+<button id="addBtn">Thêm</button>
+</div>
+
+<div class="search-filter">
+<input type="text" id="search" placeholder="Tìm theo tên">
+
+<select id="filterRank">
+<option value="all">Tất cả</option>
+<option value="Giỏi">Giỏi</option>
+<option value="Khá">Khá</option>
+<option value="Trung bình">Trung bình</option>
+<option value="Yếu">Yếu</option>
+</select>
+</div>
+
+<table>
+
+<thead>
+<tr>
+<th>STT</th>
+<th>Họ tên</th>
+<th id="sortScore">Điểm ▲</th>
+<th>Xếp loại</th>
+</tr>
+</thead>
+
+<tbody id="tableBody"></tbody>
+
+</table>
+
+</div>
+
+<script>
+
+let students = [];
+let filteredStudents = [];
+
+let keyword = "";
+let rankFilter = "all";
+let sortAsc = true;
+
+function getRank(score){
+if(score >= 8.5) return "Giỏi";
+if(score >= 7) return "Khá";
+if(score >= 5) return "Trung bình";
+return "Yếu";
+}
+
+function renderTable(){
+
+const tbody = document.getElementById("tableBody");
+tbody.innerHTML = "";
+
+if(filteredStudents.length === 0){
+
+tbody.innerHTML =
+`<tr><td colspan="4">Không có kết quả</td></tr>`;
+return;
+
+}
+
+filteredStudents.forEach((sv,i)=>{
+
+let tr = document.createElement("tr");
+
+tr.innerHTML =
+`
+<td>${i+1}</td>
+<td>${sv.name}</td>
+<td>${sv.score}</td>
+<td>${getRank(sv.score)}</td>
+`;
+
+tbody.appendChild(tr);
+
+});
+
+}
+
+function applyFilters(){
+
+filteredStudents = students.filter(sv=>{
+
+let matchName =
+sv.name.toLowerCase().includes(keyword.toLowerCase());
+
+let matchRank = true;
+
+if(rankFilter !== "all"){
+matchRank = getRank(sv.score) === rankFilter;
+}
+
+return matchName && matchRank;
+
+});
+
+filteredStudents.sort((a,b)=>{
+
+if(sortAsc){
+return a.score - b.score;
+}else{
+return b.score - a.score;
+}
+
+});
+
+renderTable();
+
+}
+
+function addStudent(){
+
+let name =
+document.getElementById("name").value.trim();
+
+let score =
+parseFloat(document.getElementById("score").value);
+
+if(name === ""){
+alert("Tên không được trống");
+return;
+}
+
+if(isNaN(score) || score < 0 || score > 10){
+alert("Điểm phải từ 0 đến 10");
+return;
+}
+
+students.push({
+name:name,
+score:score
+});
+
+applyFilters();
+
+document.getElementById("name").value="";
+document.getElementById("score").value="";
+
+}
+
+document.getElementById("addBtn")
+.addEventListener("click",addStudent);
+
+document.getElementById("search")
+.addEventListener("input",function(e){
+
+keyword = e.target.value;
+applyFilters();
+
+});
+
+document.getElementById("filterRank")
+.addEventListener("change",function(e){
+
+rankFilter = e.target.value;
+applyFilters();
+
+});
+
+document.getElementById("sortScore")
+.addEventListener("click",function(){
+
+sortAsc = !sortAsc;
+
+this.innerHTML =
+sortAsc ? "Điểm ▲" : "Điểm ▼";
+
+applyFilters();
+
+});
+
+</script>
+
+</body>
+</html>
